@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<GSUBookContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("GSUBookContext")));
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("GSUBookContext")));
 
 var app = builder.Build();
 
