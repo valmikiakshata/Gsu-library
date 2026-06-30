@@ -12,59 +12,84 @@ public class BookController : Controller
         _context = context;
     }
 
+    // Display all books
+    public IActionResult Index()
+    {
+        var books = _context.Books.ToList();
+        return View(books);
+    }
+
+    // GET: Add book
     [HttpGet]
     public IActionResult Add()
     {
         return View(new GSUBook());
     }
 
+    // POST: Add book
     [HttpPost]
     public IActionResult Add(GSUBook book)
     {
-        _context.Books.Add(book);
-        _context.SaveChanges();
-        return RedirectToAction("Index", "Home");
+        if (ModelState.IsValid)
+        {
+            _context.Books.Add(book);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(book);
     }
 
+    // GET: Edit book
     [HttpGet]
     public IActionResult Edit(int id)
     {
         var book = _context.Books.Find(id);
+
         if (book == null)
             return NotFound();
 
         return View(book);
     }
 
+    // POST: Edit book
     [HttpPost]
     public IActionResult Edit(GSUBook book)
     {
-        _context.Books.Update(book);
-        _context.SaveChanges();
-        return RedirectToAction("Index", "Home");
+        if (ModelState.IsValid)
+        {
+            _context.Books.Update(book);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(book);
     }
 
-    // GET: confirm deletion
+    // GET: Delete confirmation
+    [HttpGet]
     public IActionResult Delete(int id)
     {
         var book = _context.Books.Find(id);
+
         if (book == null)
             return NotFound();
 
         return View(book);
     }
 
-    // POST: confirmed deletion
+    // POST: Delete confirmed
     [HttpPost, ActionName("Delete")]
     public IActionResult DeleteConfirmed(int id)
     {
         var book = _context.Books.Find(id);
+
         if (book != null)
         {
             _context.Books.Remove(book);
             _context.SaveChanges();
         }
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction(nameof(Index));
     }
 }

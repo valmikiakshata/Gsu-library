@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GSULibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4feb05cb9417d82342129abb22609ba65fe6d911")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3931166104990a6daccc84fd05db76a6969bb6d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GSULibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GSULibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
